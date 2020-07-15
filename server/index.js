@@ -6,8 +6,8 @@ const express = require('express'),
     app = express(),
     apiPort = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 db.on('error', console.error.bind(console, 'MongoDB Atlas connection error:'));
