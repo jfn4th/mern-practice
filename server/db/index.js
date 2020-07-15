@@ -17,7 +17,6 @@ mongoose
     .catch((err) => {
         console.log('ERROR: ', err.message);
     });
-// mongoose.set('useFindAndModify', false);
 
 const db = mongoose.connection;
 
