@@ -6,7 +6,7 @@ createMovie = (req, res) => {
     if (!body) {
         return RandomSource.status(400).json({
             success: false,
-            error: 'Yoh must provide a movie'
+            error: 'You must provide a movie'
         });
     }
 
