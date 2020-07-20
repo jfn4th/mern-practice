@@ -61,11 +61,47 @@ export default class MoviesInsert extends Component {
         this.setState({ time });
     }
 
+    async handleIncludeMovie(e) {
+        const { name, rating, time } = this.state;
+        const arrayTime = time.split('/');
+        const payload = { name, rating, time: arrayTime };
+
+        await api.insertMovie(payload).then((res) => {
+            window.alert('Movie inserted successfully');
+            this.setState({
+                name: '',
+                rating: '',
+                time: ''
+            });
+        });
+    }
+
     render() {
         return (
-            <div>
-                <p>In this page you'll see the form to add a movie</p>
-            </div>
+            <Wrapper>
+                <Title>Create Movie</Title>
+
+                <Label>Name:</Label>
+                <InputText type='text' value={name} onChange={this.handleChangeInputName} />
+
+                <Label>Rating: </Label>
+                <InputText
+                    type='number'
+                    step='0.1'
+                    lang='en-US'
+                    min='0'
+                    max='10'
+                    pattern='[0-9]+([,/.][0-9]+)?'
+                    value={rating}
+                    onChange={this.handleChangeInputRating}
+                />
+
+                <Label>Time: </Label>
+                <InputText type='text' value={time} onChange={this.handleChangeInputTime} />
+
+                <Button onClick={this.handleIncludeMovie}>Add Movie</Button>
+                <CancelButton href={'/movies/list'}>Cancel</CancelButton>
+            </Wrapper>
         );
     }
 }
