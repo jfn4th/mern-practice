@@ -44,6 +44,7 @@ export default class MoviesInsert extends Component {
         this.handleChangeInputName = this.handleChangeInputName.bind(this);
         this.handleChangeInputRating = this.handleChangeInputRating.bind(this);
         this.handleChangeInputTime = this.handleChangeInputTime.bind(this);
+        this.handleIncludeMovie = this.handleIncludeMovie.bind(this);
     }
 
     async handleChangeInputName(e) {
@@ -77,6 +78,7 @@ export default class MoviesInsert extends Component {
     }
 
     render() {
+        const { name, rating, time } = this.state;
         return (
             <Wrapper>
                 <Title>Create Movie</Title>
